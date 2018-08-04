@@ -11,7 +11,7 @@ const cssModuleToTypescriptInterfaceProperties = (cssModuleKeys, indent = '  ') 
     .map((key, index, arr) => {
       const head = index === 0 ? indent + '$style: {\n' : ''
       const tail = index === arr.length - 1 ? `\n${indent}}` : ''
-      return `${head}${indent}'${key}': string;${tail}`
+      return `${head}${indent.repeat(2)}'${key}': string;${tail}`
     })
     .join('\n');
 };
