@@ -8,7 +8,11 @@ const filenameToInterfaceName = (filename) => {
 
 const cssModuleToTypescriptInterfaceProperties = (cssModuleKeys, indent = '  ') => {
   return cssModuleKeys
-    .map((key) => `${indent}'${key}': string;`)
+    .map((key, index, arr) => {
+      const head = index === 0 ? indent + '$style: {\n' : ''
+      const tail = index === arr.length - 1 ? `\n${indent}}` : ''
+      return `${head}${indent}'${key}': string;${tail}`
+    })
     .join('\n');
 };
 
